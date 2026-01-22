@@ -173,14 +173,14 @@ const App = () => {
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{
-                        backgroundImage: `url('https://placehold.co/1920x1080/000000/ffffff?text=Ozan+Akgün')`
+                        backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')`
                     }}
                 ></div>
 
                 <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
                     <div className="w-32 h-32 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 mb-8 mx-auto overflow-hidden">
                         <img
-                            src="https://placehold.co/600x600/000000/ffffff?text=OA"
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop"
                             alt="Ozan Akgün"
                             className="w-full h-full object-cover"
                         />
