@@ -1,5 +1,6 @@
 
 import { Mail, Phone, MapPin, Linkedin, Instagram, Download, ChevronDown } from 'lucide-react';
+import profilePic from './assets/ozanprofilelast.png';
 
 const App = () => {
     // Updated mock data based on the CV content
@@ -180,7 +181,7 @@ const App = () => {
                 <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
                     <div className="w-32 h-32 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 mb-8 mx-auto overflow-hidden">
                         <img
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop"
+                            src={profilePic}
                             alt="Ozan Akgün"
                             className="w-full h-full object-cover"
                         />
