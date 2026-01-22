@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Mail, Phone, MapPin, Linkedin, Instagram, Download, ChevronDown } from 'lucide-react';
 
 const App = () => {
@@ -349,5 +349,7 @@ const App = () => {
         </div>
     );
 };
+
+export default App;
 
 
