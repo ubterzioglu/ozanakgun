@@ -18,56 +18,56 @@ const App = () => {
             title: "Almanca Satış Temsilcisi",
             company: "Wayfair - Telus",
             period: "Ağustos 2024 - Nisan 2025",
-            description: "E-posta ve canlı destek üzerinden gelen müşteri taleplerini hızlı ve etkili şekilde yanıtladım. Müşteri şikayet ve sorunlarını analiz ederek çözüm odaklı geri dönüşler sağladım. Müşteri memnuniyetini arttırmaya yönelik profesyonel yazışmalar gerçekleştirdim."
+            description: "E-posta ve canlı destek üzerinden gelen müşteri talepleri hızlı ve etkili şekilde yanıtlandı; şikayetler analiz edilerek çözüm odaklı geri dönüşler sağlandı ve memnuniyeti artırmaya yönelik profesyonel yazışmalar yürütüldü."
         },
         {
             id: 2,
             title: "Almanca Eğitmeni",
             company: "Ümraniye English Time",
             period: "Eylül 2023 - Ağustos 2024",
-            description: "Grup dersleri ve bireysel dersler verdim (A1 ve A2 grup dersleri). Goethe-Zertifikat, aile birleşimi (Goethe Zertifikat A1), TELC sınavlarına yönelik dersler verdim. Öğrenci gereksinimlerine uygun, katılımı en üst düzeye çıkaran ders programları hazırladım."
+            description: "A1-A2 seviyelerinde grup ve bireysel dersler yürütüldü; Goethe-Zertifikat, aile birleşimi ve TELC sınavlarına yönelik içerikler işlendi. Öğrenci gereksinimlerine göre yüksek katılımlı ders programları tasarlandı."
         },
         {
             id: 3,
             title: "Almanca Eğitmeni",
             company: "Maltepe İngiliz Kültür",
             period: "Temmuz 2023 - Şubat 2024",
-            description: "B1 ve B2 seviyesinde grup eğitimi verdim."
+            description: "B1 ve B2 seviyesinde grup eğitimleri yürütüldü."
         },
         {
             id: 4,
             title: "Almanca Eğitmeni",
             company: "Maltepe Amerikan Kültür",
             period: "Ağustos 2023 - Şubat 2024",
-            description: "A1 ve A2 seviyesinde grup dersleri verdim."
+            description: "A1 ve A2 seviyesinde grup dersleri organize edildi."
         },
         {
             id: 5,
             title: "Almanca Eğitmeni",
             company: "Levent Amerikan Kültür",
             period: "Eylül 2022 - Kasım 2023",
-            description: "Sprachdiplom ve aile birleşimi sınavlarına yönelik bireysel dersler verdim. A2 grup dersleri yaptım."
+            description: "Sprachdiplom ve aile birleşimi sınavlarına yönelik bireysel programlar hazırlandı; A2 grup dersleri yürütüldü."
         },
         {
             id: 6,
             title: "Almanca Eğitmeni",
             company: "Beşiktaş English Time",
             period: "Şubat 2023 - Ekim 2023",
-            description: "Yüzyüze grup dersleri ve birebir online dersler verdim. Lise öğrencilerine yardımcı olma amaçlı Almanya'da okumak veya orada çalışmak için öğrencilere Almanca'da destek verdim."
+            description: "Yüzyüze grup ve birebir online dersler yürütüldü; Almanya'da eğitim veya çalışma hedefleyen lise öğrencilerine Almanca desteği sağlandı."
         },
         {
             id: 7,
             title: "Almanca Eğitmeni",
             company: "Sancaktepe Amerikan-Ümraniye Amerikan Kültür",
             period: "Şubat 2022 - Ağustos 2022",
-            description: "Grup ve bireysel eğitimler verdim. A1 seviyesinde aile birleşim dersleri verdim."
+            description: "Grup ve bireysel eğitimler yönetildi; A1 seviyesinde aile birleşimi odaklı dersler planlandı."
         },
         {
             id: 8,
             title: "Özel Ders",
             company: "Özel",
             period: "Ekim 2021 - Ocak 2022",
-            description: "İlkokul öğrencisine özel dersler verdim."
+            description: "İlkokul öğrencisine yönelik bire bir dersler organize edildi."
         }
     ];
 
@@ -77,7 +77,7 @@ const App = () => {
             degree: "Ekonomi Lisansı",
             institution: "İstanbul Bilgi Üniversitesi",
             period: "2008 - 2013",
-            details: "%%50 burs"
+            details: "%50 burs"
         },
         {
             id: 2,
@@ -90,7 +90,7 @@ const App = () => {
             degree: "Kimya Mühendisliği (Terk)",
             institution: "İstanbul Yeditepe Üniversitesi",
             period: "2004 - 2005",
-            details: "%%100 burs"
+            details: "%100 burs"
         },
         {
             id: 4,
@@ -135,7 +135,8 @@ const App = () => {
             id: 4,
             title: "SPL-2 ve SPL-3",
             issuer: "Sermaye Piyasası Kurulu",
-            year: "2016"
+            year: "2016",
+            description: "Lisans için gereken sınavların birçoğu başarıyla tamamlandı; resmi lisanslama süreci devam ediyor."
         },
         {
             id: 5,
@@ -160,10 +161,61 @@ const App = () => {
         }
     ];
 
+    const navLinks = [
+        { label: "Başarılar", href: "#basarilar" },
+        { label: "Deneyim", href: "#deneyim" },
+        { label: "Eğitim", href: "#eğitim" },
+        { label: "Beceriler", href: "#beceriler" },
+        { label: "Sertifikalar", href: "#sertifikalar" },
+        { label: "İletişim", href: "#contact" }
+    ];
+
     const contactMethods = [
-        { icon: Phone, label: "WhatsApp", detail: "Hızlı", value: "+90 532 270 0666" },
-        { icon: Linkedin, label: "LinkedIn", detail: "Normal", value: "linkedin.com/in/ozanakgun" },
-        { icon: Mail, label: "E-posta", detail: "Yavaş", value: "oznkgun@gmail.com" }
+        {
+            icon: Phone,
+            label: "WhatsApp",
+            value: "+90 532 270 0666",
+            href: "https://wa.me/905322700666?text=Almanca%20konusunda%20deste%C4%9Fe%20ihtiyac%C4%B1m%20var.",
+            bgClass: "bg-emerald-50"
+        },
+        {
+            icon: Linkedin,
+            label: "LinkedIn",
+            href: "https://www.linkedin.com/in/ozan-akgun123/",
+            bgClass: "bg-sky-50"
+        },
+        {
+            icon: Mail,
+            label: "E-posta",
+            href: "mailto:oznkgun@gmail.com",
+            bgClass: "bg-amber-50"
+        },
+        {
+            icon: Instagram,
+            label: "Instagram",
+            href: "https://www.instagram.com/oznkgun",
+            bgClass: "bg-rose-50"
+        }
+    ];
+
+    const successStories = [
+        {
+            name: "Anıl",
+            age: 38,
+            summary: "Almanca geçmişi olmadan 90 bire bir dersle TELC A2 sertifikasını kazandı.",
+            details: "Derslere düzenli katılım gösterdi, ödevleri eksiksiz tamamladı ve hedeflenen seviyeye ulaştı."
+        },
+        {
+            name: "Cihat",
+            age: 25,
+            summary: "Yoğun çalışma temposuna rağmen ders içi uygulamalarla verimli ilerledi.",
+            details: "Berberlik nedeniyle ödevlere sınırlı vakit ayırabildi ancak Almanca temellerini derslerde edindi."
+        },
+        {
+            name: "Eylem",
+            summary: "Kısa sürede A1 seviyesini kavrayarak Au-pair programıyla Almanya'ya gitti.",
+            details: "Optikerlik mezunu; Almanca geçmişi yokken programı tamamlayıp şu an Almanya'da kendi mesleğini icra ediyor."
+        }
     ];
 
     return (
@@ -210,18 +262,37 @@ const App = () => {
             <nav className="sticky top-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-30">
                 <div className="max-w-6xl mx-auto px-6 py-4">
                     <div className="flex justify-center gap-8">
-                        {['Deneyim', 'Eğitim', 'Beceriler', 'Sertifikalar', 'İletişim'].map((item) => (
+                        {navLinks.map((link) => (
                             <a
-                                key={item}
-                                href={`#${item.toLowerCase()}`}
+                                key={link.href}
+                                href={link.href}
                                 className="font-medium hover:text-gray-600 transition-colors duration-200"
                             >
-                                {item}
+                                {link.label}
                             </a>
                         ))}
                     </div>
                 </div>
             </nav>
+
+            {/* Success Stories Section */}
+            <section id="basarilar" className="py-20 px-6 bg-gray-50">
+                <div className="max-w-6xl mx-auto">
+                    <h2 className="text-4xl font-bold text-center mb-16">Başarılı Öğrencilerim</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {successStories.map((story, index) => (
+                            <div key={index} className="bg-white p-8 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
+                                <h3 className="text-2xl font-semibold mb-2">
+                                    {story.name}
+                                    {story.age && <span className="text-gray-600 text-lg"> ({story.age})</span>}
+                                </h3>
+                                <p className="text-lg text-gray-800 mb-3 leading-snug">{story.summary}</p>
+                                <p className="text-gray-600 leading-relaxed">{story.details}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
             {/* Experience Section */}
             <section id="deneyim" className="py-20 px-6 bg-gray-50">
@@ -229,7 +300,7 @@ const App = () => {
                     <h2 className="text-4xl font-bold text-center mb-16">İş Deneyimi</h2>
                     <div className="space-y-12">
                         {experience.map((exp) => (
-                            <div key={exp.id} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                            <div key={exp.id} className="bg-white p-8 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
                                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                                     <h3 className="text-2xl font-semibold">{exp.title}</h3>
                                     <span className="text-gray-600 font-medium">{exp.period}</span>
@@ -248,7 +319,7 @@ const App = () => {
                     <h2 className="text-4xl font-bold text-center mb-16">Eğitim</h2>
                     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         {education.map((edu) => (
-                            <div key={edu.id} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 text-center">
+                            <div key={edu.id} className="bg-white p-8 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
                                 <h3 className="text-2xl font-semibold mb-4">{edu.degree}</h3>
                                 <p className="text-xl text-gray-800 mb-2">{edu.institution}</p>
                                 <p className="text-gray-600 font-medium">{edu.period}</p>
@@ -267,7 +338,7 @@ const App = () => {
                         {skills.map((skill, index) => (
                             <div
                                 key={index}
-                                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 text-center"
+                                className="bg-white p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300 text-center"
                             >
                                 <p className="text-lg">{skill}</p>
                             </div>
@@ -282,7 +353,7 @@ const App = () => {
                     <h2 className="text-4xl font-bold text-center mb-16">Kurs ve Sertifikalar</h2>
                     <div className="space-y-8 max-w-4xl mx-auto">
                         {certifications.map((cert) => (
-                            <div key={cert.id} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                            <div key={cert.id} className="bg-white p-8 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
                                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                                     <h3 className="text-2xl font-semibold">{cert.title}</h3>
                                     <span className="text-gray-600 font-medium">{cert.year}</span>
@@ -300,42 +371,30 @@ const App = () => {
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-4xl font-bold mb-16">İletişim</h2>
 
-                    <div className="grid md:grid-cols-3 gap-8 mb-12">
+                    <div className="grid md:grid-cols-4 gap-8 mb-12">
                         {contactMethods.map((method, index) => (
-                            <div key={index} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-                                <method.icon className="w-12 h-12 mx-auto mb-4 text-gray-800" />
-                                <h3 className="text-xl font-semibold mb-2">{method.label}</h3>
-                                <p className="text-gray-600 mb-2">({method.detail})</p>
-                                <p className="text-gray-800 font-medium">{method.value}</p>
-                            </div>
+                            <a
+                                key={index}
+                                href={method.href}
+                                target={method.href.startsWith('http') ? "_blank" : undefined}
+                                rel={method.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                                className={`${method.bgClass} block p-8 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-transform transition-shadow duration-300 hover:-translate-y-1`}
+                            >
+                                <method.icon className="w-12 h-12 mx-auto mb-3 text-gray-800" />
+                                <h3 className="text-lg md:text-xl font-semibold mb-3 leading-tight">{method.label}</h3>
+                                {method.value && (
+                                    <p className="text-sm md:text-base text-gray-900 font-medium break-words">{method.value}</p>
+                                )}
+                            </a>
                         ))}
                     </div>
 
-                    <div className="flex justify-center gap-6 mb-12">
-                        <a
-                            href="https://linkedin.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-white p-4 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:scale-110"
-                        >
-                            <Linkedin className="w-6 h-6" />
-                        </a>
-                        <a
-                            href="https://instagram.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-white p-4 rounded-full shadow-sm hover:shadow-md transition-all duration-300 hover:scale-110"
-                        >
-                            <Instagram className="w-6 h-6" />
-                        </a>
-                    </div>
-
                     <a
-                        href="/cv.pdf"
+                        href="/ozanakguncv.pdf"
                         download
-                        className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300"
+                        className="inline-flex items-center gap-3 bg-black text-white px-10 py-5 text-lg rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300 shadow-md hover:shadow-lg"
                     >
-                        <Download size={20} />
+                        <Download size={22} />
                         CV'yi İndir
                     </a>
                 </div>
