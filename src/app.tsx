@@ -6,7 +6,7 @@ const App = () => {
     // Updated mock data based on the CV content
     const personalInfo = {
         name: "Ozan Akgün",
-        title: "Ekonomi Mezunu & Almanca Eğitmeni",
+        title: "Almanca Eğitmeni & Ekonomi Mezunu",
         location: "Üsküdar, İstanbul",
         email: "oznkgun@gmail.com",
         phone: "+90 532 270 0666"
@@ -81,16 +81,17 @@ const App = () => {
         },
         {
             id: 2,
-            degree: "Makine Mühendisliği (Terk)",
+            degree: "Makine Mühendisliği",
             institution: "RWTH Aachen",
-            period: "2005 - 2007"
+            period: "2005 - 2007",
+            details: "Programdan kariyer yönlendirmesi nedeniyle ayrılma."
         },
         {
             id: 3,
-            degree: "Kimya Mühendisliği (Terk)",
+            degree: "Kimya Mühendisliği",
             institution: "İstanbul Yeditepe Üniversitesi",
             period: "2004 - 2005",
-            details: "%100 burs"
+            details: "%100 burs; programdan ayrılma."
         },
         {
             id: 4,
@@ -101,13 +102,15 @@ const App = () => {
     ];
 
     const skills = [
-        "Almanca (İleri Seviye)",
-        "İngilizce (Orta İleri Seviye)",
-        "Müşteri Hizmetleri ve Destek",
-        "Satış ve Pazarlama",
-        "Eğitim ve Öğretim",
-        "Analitik Düşünme",
-        "Yazılı İletişim"
+        { name: "Almanca (İleri Seviye)", bgClass: "bg-emerald-50" },
+        { name: "İngilizce (Orta İleri Seviye)", bgClass: "bg-sky-50" },
+        { name: "Goethe-Zertifikat hazırlık (A1-C1)", bgClass: "bg-amber-50" },
+        { name: "TELC / aile birleşimi sınav koçluğu", bgClass: "bg-rose-50" },
+        { name: "Eğitim ve Öğretim", bgClass: "bg-indigo-50" },
+        { name: "Analitik Düşünme", bgClass: "bg-slate-50" },
+        { name: "Yazılı İletişim", bgClass: "bg-lime-50" },
+        { name: "Müşteri Hizmetleri ve Destek", bgClass: "bg-cyan-50" },
+        { name: "Ders planlama ve materyal geliştirme", bgClass: "bg-orange-50" }
     ];
 
     const certifications = [
@@ -127,33 +130,41 @@ const App = () => {
         },
         {
             id: 3,
-            title: "Sermaye Piyasası Lisansı - 1",
+            title: "Sermaye Piyasası Lisansı (SPL-1)",
             issuer: "Sermaye Piyasası Kurulu",
-            year: "2016"
+            year: "2016",
+            description: "Temel düzey lisans; zorunlu sınavlar tamamlandı."
         },
         {
             id: 4,
-            title: "SPL-2 ve SPL-3",
+            title: "Sermaye Piyasası Lisansı (SPL-2)",
             issuer: "Sermaye Piyasası Kurulu",
             year: "2016",
-            description: "Lisans için gereken sınavların birçoğu başarıyla tamamlandı; resmi lisanslama süreci devam ediyor."
+            description: "Gerekli sınavların büyük kısmı geçildi; lisanslama süreci sürüyor."
         },
         {
             id: 5,
+            title: "Sermaye Piyasası Lisansı (SPL-3)",
+            issuer: "Sermaye Piyasası Kurulu",
+            year: "2016",
+            description: "İleri seviye modüllerin çoğu tamamlandı; lisans onay aşamasında."
+        },
+        {
+            id: 6,
             title: "KPSS Lisans",
             issuer: "ÖSYM",
             year: "2016",
             description: "KPSSP9: 81,61 | KPSSP119: 82,27"
         },
         {
-            id: 6,
+            id: 7,
             title: "İngilizce Dil Kursu",
             issuer: "Boğaziçi Üniversitesi",
             year: "2017-2018",
             description: "İleri seviyede İngilizce kursu."
         },
         {
-            id: 7,
+            id: 8,
             title: "YDS Almanca",
             issuer: "ÖSYM",
             year: "2019",
@@ -203,18 +214,21 @@ const App = () => {
             name: "Anıl",
             age: 38,
             summary: "Almanca geçmişi olmadan 90 bire bir dersle TELC A2 sertifikasını kazandı.",
-            details: "Derslere düzenli katılım gösterdi, ödevleri eksiksiz tamamladı ve hedeflenen seviyeye ulaştı."
+            details: "38 yaşında; derslere düzenli katılım gösterdi, ödevleri eksiksiz tamamladı ve hedeflenen seviyeye ulaştı.",
+            bgClass: "bg-emerald-50"
         },
         {
             name: "Cihat",
             age: 25,
             summary: "Yoğun çalışma temposuna rağmen ders içi uygulamalarla verimli ilerledi.",
-            details: "Berberlik nedeniyle ödevlere sınırlı vakit ayırabildi ancak Almanca temellerini derslerde edindi."
+            details: "25 yaşında; berberlik nedeniyle ödevlere sınırlı vakit ayırabildi ancak Almanca temellerini derslerde edindi.",
+            bgClass: "bg-sky-50"
         },
         {
             name: "Eylem",
             summary: "Kısa sürede A1 seviyesini kavrayarak Au-pair programıyla Almanya'ya gitti.",
-            details: "Optikerlik mezunu; Almanca geçmişi yokken programı tamamlayıp şu an Almanya'da kendi mesleğini icra ediyor."
+            details: "Optikerlik mezunu; Almanca geçmişi yokken programı tamamlayıp şu an Almanya'da kendi mesleğini icra ediyor.",
+            bgClass: "bg-amber-50"
         }
     ];
 
@@ -231,7 +245,7 @@ const App = () => {
                 ></div>
 
                 <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
-                    <div className="w-32 h-32 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 mb-8 mx-auto overflow-hidden">
+                    <div className="w-80 h-80 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white/30 mb-8 mx-auto overflow-hidden">
                         <img
                             src={profilePic}
                             alt="Ozan Akgün"
@@ -281,13 +295,13 @@ const App = () => {
                     <h2 className="text-4xl font-bold text-center mb-16">Başarılı Öğrencilerim</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {successStories.map((story, index) => (
-                            <div key={index} className="bg-white p-8 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
-                                <h3 className="text-2xl font-semibold mb-2">
-                                    {story.name}
-                                    {story.age && <span className="text-gray-600 text-lg"> ({story.age})</span>}
-                                </h3>
+                            <div
+                                key={index}
+                                className={`${story.bgClass || 'bg-white'} p-8 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300`}
+                            >
+                                <h3 className="text-2xl font-semibold mb-2">{story.name}</h3>
                                 <p className="text-lg text-gray-800 mb-3 leading-snug">{story.summary}</p>
-                                <p className="text-gray-600 leading-relaxed">{story.details}</p>
+                                <p className="text-gray-700 leading-relaxed">{story.details}</p>
                             </div>
                         ))}
                     </div>
@@ -300,8 +314,8 @@ const App = () => {
                     <h2 className="text-4xl font-bold text-center mb-16">İş Deneyimi</h2>
                     <div className="space-y-12">
                         {experience.map((exp) => (
-                            <div key={exp.id} className="bg-white p-8 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
-                                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div key={exp.id} className="bg-slate-50 p-8 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
+                                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-2">
                                     <h3 className="text-2xl font-semibold">{exp.title}</h3>
                                     <span className="text-gray-600 font-medium">{exp.period}</span>
                                 </div>
@@ -334,13 +348,13 @@ const App = () => {
             <section id="beceriler" className="py-20 px-6 bg-gray-50">
                 <div className="max-w-6xl mx-auto">
                     <h2 className="text-4xl font-bold text-center mb-16">Beceriler</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto items-stretch">
                         {skills.map((skill, index) => (
                             <div
                                 key={index}
-                                className="bg-white p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300 text-center"
+                                className={`${skill.bgClass} p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300 text-center h-full flex items-center justify-center`}
                             >
-                                <p className="text-lg">{skill}</p>
+                                <p className="text-lg text-gray-900">{skill.name}</p>
                             </div>
                         ))}
                     </div>
@@ -351,15 +365,17 @@ const App = () => {
             <section id="sertifikalar" className="py-20 px-6">
                 <div className="max-w-6xl mx-auto">
                     <h2 className="text-4xl font-bold text-center mb-16">Kurs ve Sertifikalar</h2>
-                    <div className="space-y-8 max-w-4xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                         {certifications.map((cert) => (
-                            <div key={cert.id} className="bg-white p-8 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300">
-                                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                                    <h3 className="text-2xl font-semibold">{cert.title}</h3>
-                                    <span className="text-gray-600 font-medium">{cert.year}</span>
+                            <div key={cert.id} className="bg-white p-6 rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300 h-full flex flex-col justify-between">
+                                <div>
+                                    <div className="flex flex-col mb-3">
+                                        <h3 className="text-xl font-semibold">{cert.title}</h3>
+                                        <span className="text-gray-600 font-medium">{cert.year}</span>
+                                    </div>
+                                    <p className="text-lg text-gray-800 mb-2">{cert.issuer}</p>
+                                    <p className="text-gray-600 text-sm leading-relaxed">{cert.description}</p>
                                 </div>
-                                <p className="text-xl text-gray-800 mb-2">{cert.issuer}</p>
-                                <p className="text-gray-600">{cert.description}</p>
                             </div>
                         ))}
                     </div>
