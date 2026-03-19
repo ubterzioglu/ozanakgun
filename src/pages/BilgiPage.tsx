@@ -3,31 +3,27 @@ import {
   GraduationCap, Clock, Award, BookOpen, Users, Video, MapPin, 
   CheckCircle, Phone, Mail, Calendar, Star, TrendingUp, 
   Globe, FileText, Headphones, PenTool, MessageCircle, 
-  ChevronRight, Menu, X, BadgeCheck, Target, Zap, Heart,
-  Briefcase
+  ChevronRight, BadgeCheck, Target, Zap, Heart,
+  Briefcase, Wrench, Stethoscope
 } from 'lucide-react'
 import './BilgiPage.css'
 
 function BilgiPage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
   const [activeTab, setActiveTab] = useState('online')
+  const [openAccordion, setOpenAccordion] = useState<number | null>(null)
+  const [showUpButton, setShowUpButton] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      setShowUpButton(window.scrollY > 400)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = [
-    { label: 'Kurs Seviyeleri', href: '#seviyeler' },
-    { label: 'Sınav Hazırlığı', href: '#sinav' },
-    { label: 'Eğitmen', href: '#egitmen' },
-    { label: 'Fiyatlandırma', href: '#fiyat' },
-    { label: 'İletişim', href: '#iletisim' },
-  ]
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   const levels = [
     {
@@ -41,7 +37,7 @@ function BilgiPage() {
     },
     {
       level: 'A2',
-      hours: '40 saat',
+      hours: 'A1 (50) + A2 (40) : 90 saat',
       title: 'Temel Seviye',
       description: 'Günlük konuları anlama ve kendini ifade etme. Geçmiş deneyimleri aktarma.',
       features: ['Geçmiş deneyimleri aktarma', 'Günlük konuları anlama', 'Kendini ifade etme'],
@@ -64,14 +60,6 @@ function BilgiPage() {
     { name: 'Okuma (Lesen)', a1: '25 dk', a2: '30 dk', b1: '65 dk', icon: BookOpen },
     { name: 'Yazma (Schreiben)', a1: '20 dk', a2: '20 dk', b1: '60 dk', icon: PenTool },
     { name: 'Konuşma (Sprechen)', a1: '15 dk', a2: '15 dk', b1: '15 dk', icon: MessageCircle },
-  ]
-
-  const scoringSystem = [
-    { range: '90-100 Puan', grade: 'Pek İyi', color: 'bg-emerald-500' },
-    { range: '80-89 Puan', grade: 'İyi', color: 'bg-blue-500' },
-    { range: '70-79 Puan', grade: 'Orta', color: 'bg-amber-500' },
-    { range: '60-69 Puan', grade: 'Geçer', color: 'bg-orange-500' },
-    { range: '0-59 Puan', grade: 'Başarısız', color: 'bg-red-500' },
   ]
 
   const teachingMethods = [
@@ -99,21 +87,6 @@ function BilgiPage() {
     }
   ]
 
-  const courseFormats = [
-    { title: 'Özel Ders', subtitle: 'Birebir odaklanma', description: 'Kişiselleştirilmiş program, bireysel ilerleme hızı' },
-    { title: 'Grup Dersi', subtitle: 'Ekonomik seçenek', description: 'Daha uygun fiyat, grup dinamiği ile etkileşim' },
-    { title: 'Karma (Hybrid)', subtitle: 'Online + Yüz yüze', description: 'Esnek kombinasyon seçenekleri' },
-  ]
-
-  const timeline = [
-    { year: '2003', title: 'Cağaloğlu Anadolu Lisesi', description: 'Almanca eğitimli Türkiye\'nin en iyi liselerinden biri' },
-    { year: '2005-07', title: 'Aachen, Almanya Deneyimi', description: 'Gerçek dil ortamında pratik tecrübe' },
-    { year: '2008', title: 'YDT Sınavı Yüksek Başarı', description: 'Akademik dil yeterliliği kanıtı' },
-    { year: '2015', title: 'Goethe-Zertifikat C1', description: 'İleri düzey Almanca yeterlilik sertifikası' },
-    { year: '2022-Günümüz', title: 'Kurumsal Deneyim', description: 'Birçok yabancı dil kurumunda Almanca öğretmenliği' },
-    { year: '2024-2025', title: 'Wayfair Firması', description: 'Müşteri temsilcisi olarak çalışma deneyimi' },
-  ]
-
   const teachingApproach = [
     { title: 'Öğrenci Odaklı', description: 'Her öğrencinin ihtiyaçlarına göre özelleştirilmiş program', icon: Target },
     { title: 'Esnek Uyum', description: 'Farklı öğrenme stillerine ve hedeflere uyum sağlama', icon: Zap },
@@ -122,12 +95,12 @@ function BilgiPage() {
   ]
 
   const targetGroups = [
-    { title: 'Aile Birleşimi İçin', target: 'A1 Sertifikası', description: 'Almanya\'da aile birleşimi vizesi için zorunlu A1 sertifikasına ihtiyaç duyanlar.', icon: Heart },
-    { title: 'Teknik Çalışanlar', target: 'A2 Sertifikası', description: 'Almanya\'da çalışmak isteyen teknik personel.', icon: TrendingUp },
-    { title: 'İşe Kabul İçin', target: 'A1 veya A2', description: 'İşe kabul alması gereken ve sertifika ile süreci tamamlamak isteyenler.', icon: Briefcase },
-    { title: 'Az Almanca Gerektiren İşler', target: 'Temel iletişim yeterli', description: 'Çok Almanca gerektirmeyen iş pozisyonları için temel iletişim becerisi.', icon: CheckCircle },
-    { title: 'Pratik Kullanım İsteyenler', target: 'Günlük konuşma odaklı', description: 'Akademik hedefi olmayan, pratik Almanca kullanımı isteyenler.', icon: MessageCircle },
-    { title: 'Günlük İletişim', target: 'Günlük hayat odaklı', description: 'Günlük hayatta Almanca ile iletişim kurmak isteyenler.', icon: Globe },
+    { title: 'Aile Birleşimi İçin', target: 'A1 Sertifikası', description: 'Almanya\'da aile birleşimi vizesi almak isteyenler için A1 seviyesi zorunludur. Eş ve çocuk kabulü için devlet tarafından talep edilen bu sertifika, temel iletişim becerilerini kanıtlar. Goethe veya TELC sınavlarına yönelik hazırlık programlarımız sayesinde kısa sürede hedefinize ulaşabilirsiniz. Dersler hem online hem yüz yüze seçenekleriyle sunulmaktadır.', icon: Heart },
+    { title: 'Teknik Çalışanlar', target: 'A2 Sertifikası', description: 'Almanya\'da mühendis, teknisyen veya teknik personel olarak çalışmak isteyenler için A2 seviyesi gereklidir. İş görüşmelerinde ve günlük iş iletişiminde yeterli olacak seviyede Almanca öğrenimi sağlanır. Mesleki terimler ve iş hayatında kullanılan pratik ifadeler ders içeriğine dahildir.', icon: TrendingUp },
+    { title: 'İşe Kabul İçin', target: 'A1 veya A2', description: 'Almanya\'da işe başlamak için işverenler tarafından talep edilen dil sertifikalarını almanız gerekmektedir. A1 seviyesi giriş pozisyonları için yeterliyken, A2 seviyesi daha kapsamlı iş tanımları için önerilir. Sınav odaklı eğitim programlarımızla iş hayatına hazırlıklı olun.', icon: Briefcase },
+    { title: 'Az Almanca Gerektiren İşler', target: 'Temel iletişim yeterli', description: 'Temizlik, depo çalışanı, restoran yardımcısı gibi az Almanca gerektiren pozisyonlar için temel iletişim becerileri yeterlidir. Günlük rutinleri anlama, basit talimatları takip etme ve temel ihtiyaçları ifade etme becerileri kazandırılır. Pratik odaklı derslerle hızla iş hayatına atılabilirsiniz.', icon: CheckCircle },
+    { title: 'Pratik Kullanım İsteyenler', target: 'Günlük konuşma odaklı', description: 'Akademik veya sınav hedefi olmadan, sadece günlük hayatta Almanca konuşmak isteyenler için özel programlar hazırlıyoruz. Alışveriş, restoran, sosyal ortamlar gibi senaryolarda pratik yaparak özgüven kazanırsınız. Esnek ders saatleri ve birebir özel ders seçenekleri mevcuttur.', icon: MessageCircle },
+    { title: 'Günlük İletişim', target: 'Günlük hayat odaklı', description: 'Tatil, seyahat veya Almanya\'da yaşayan yakınlarınızla iletişim kurmak için Almanca öğrenmek isteyenler için uygundur. Temel kelime haznesi, basit diyaloglar ve günlük rutinleri anlatma becerileri üzerinde durulur. Gerçek hayat senaryoları ile eğlenceli ve pratik bir öğrenme deneyimi sunulmaktadır.', icon: Globe },
   ]
 
   const testimonials = [
@@ -147,141 +120,86 @@ function BilgiPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            <a href="#" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-gray-900 to-red-600 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">A</span>
-              </div>
-              <span className={`font-bold text-lg hidden sm:block ${isScrolled ? 'text-gray-900' : 'text-white'}`}>Almanca Kursu</span>
-            </a>
-            
-            {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-8">
-              {navItems.map((item) => (
-                <a 
-                  key={item.href} 
-                  href={item.href} 
-                  className={`text-sm font-medium hover:text-red-600 transition-colors ${isScrolled ? 'text-gray-700' : 'text-white/90'}`}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <a href="tel:+905322700666" className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2 transition-colors">
-                <Phone className="w-4 h-4" />
-                İletişim
-              </a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button 
-              className="md:hidden p-2"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? (
-                <X className={`w-6 h-6 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
-              ) : (
-                <Menu className={`w-6 h-6 ${isScrolled ? 'text-gray-900' : 'text-white'}`} />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t">
-            <div className="max-w-7xl mx-auto px-4 py-4 space-y-4">
-              {navItems.map((item) => (
-                <a 
-                  key={item.href} 
-                  href={item.href} 
-                  className="block text-gray-700 hover:text-red-600 font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
-              <a href="tel:+905322700666" className="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium flex items-center justify-center gap-2">
-                <Phone className="w-4 h-4" />
-                İletişim
-              </a>
-            </div>
-          </div>
-        )}
-      </nav>
+      {/* Scroll to Top Button */}
+      {showUpButton && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 w-12 h-12 bg-red-600 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-red-700 transition-all"
+          aria-label="Yukarı git"
+        >
+          <ChevronRight className="w-6 h-6 -rotate-90" />
+        </button>
+      )}
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-red-900">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1920&q=80')] bg-cover bg-center opacity-20"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-gray-900/40"></div>
-        </div>
-        
+      <section className="relative min-h-[85vh] sm:min-h-[80vh] flex items-start justify-center overflow-hidden bg-white pt-16 sm:pt-20">
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-600/20 text-red-400 border border-red-600/30 mb-6">
-              <Award className="w-3 h-3" />
-              Goethe C1 Sertifikalı Eğitmen
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden mb-8 max-w-xl mx-auto">
+              <div className="h-1 bg-green-500"></div>
+              <div className="p-6 text-center">
+                <h1 className="text-[clamp(1.5rem,6vw,3rem)] font-bold text-gray-900 mb-1 whitespace-nowrap">
+                  Almanca Dil Kursu
+                </h1>
+                <h2 className="text-[clamp(1rem,4vw,1.75rem)] font-bold text-gray-900 mb-3 whitespace-nowrap">
+                  Ozan Akgün
+                </h2>
+                <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-100 text-red-700 text-sm mb-3">
+                  <Award className="w-4 h-4 flex-shrink-0" />
+                  <span>Goethe C1 Sertifikalı</span>
+                </div>
+                <p className="text-sm text-gray-600 mb-4">
+                  A1-A2-B1 | Online & Yüz Yüze | Goethe TELC Hazırlık
+                </p>
+                <div className="flex flex-wrap justify-center gap-4">
+                  <div className="flex items-center gap-1.5 text-gray-700 text-sm">
+                    <BadgeCheck className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <span>4+ Yıl</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-gray-700 text-sm">
+                    <BadgeCheck className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <span>C1 Sertifika</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-gray-700 text-sm">
+                    <BadgeCheck className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <span>%60+ Başarı</span>
+                  </div>
+                </div>
+              </div>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Almanca <span className="text-red-500">Dil Kursu</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-300 mb-4 font-light">
-              OZAN AKGÜN
-            </p>
-            
-            <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-              A1 - A2 - B1 Seviyeleri | Online & Yüz Yüze | Goethe TELC Sınavlarına Hazırlık
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              <div className="flex items-center gap-2 text-gray-300">
-                <BadgeCheck className="w-5 h-5 text-red-500" />
-                <span>4+ Yıl Tecrübe</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-300">
-                <BadgeCheck className="w-5 h-5 text-red-500" />
-                <span>Goethe C1 Sertifikalı</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-300">
-                <BadgeCheck className="w-5 h-5 text-red-500" />
-                <span>%60+ Başarı Oranı</span>
-              </div>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+905322700666" className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
-                <Calendar className="w-5 h-5" />
-                Ücretsiz Deneme Dersi
+            <div className="flex flex-col gap-3 justify-center max-w-md mx-auto">
+              <a href="#seviyeler" className="bg-red-100 hover:bg-red-200 text-red-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+                <GraduationCap className="w-5 h-5" />
+                Kurs Seviyeleri
               </a>
-              <a href="tel:+905322700666" className="border border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+              <a href="#sinav" className="bg-blue-100 hover:bg-blue-200 text-blue-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+                <Award className="w-5 h-5" />
+                Sınav Hazırlığı
+              </a>
+              <a href="#egitmen" className="bg-purple-100 hover:bg-purple-200 text-purple-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+                <Users className="w-5 h-5" />
+                Eğitmen
+              </a>
+              <a href="#fiyat" className="bg-amber-100 hover:bg-amber-200 text-amber-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+                <TrendingUp className="w-5 h-5" />
+                Fiyatlandırma
+              </a>
+              <a href="#iletisim" className="bg-green-100 hover:bg-green-200 text-green-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
                 <Phone className="w-5 h-5" />
-                İletişime Geç
+                İletişim
               </a>
             </div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <ChevronRight className="w-8 h-8 text-white/50 rotate-90" />
-        </div>
       </section>
 
       {/* Course Levels Section */}
-      <section id="seviyeler" className="py-16 md:py-24 bg-gray-50">
+      <section id="seviyeler" className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-100 text-red-700 mb-4">
-              <GraduationCap className="w-3 h-3" />
-              Kurs Seviyeleri
-            </div>
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Kurs Seviyeleri ve Ders Saatleri
             </h2>
@@ -290,7 +208,7 @@ function BilgiPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-5">
             {levels.map((level) => (
               <div key={level.level} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className={`h-2 bg-gradient-to-r ${level.color}`}></div>
@@ -320,22 +238,19 @@ function BilgiPage() {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <div className="inline-block bg-gradient-to-r from-red-600 to-red-700 text-white rounded-lg px-8 py-4">
-              <p className="font-semibold">A1 + A2 Birleşik Paket = 90 saat</p>
-            </div>
-          </div>
+
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="flex items-center justify-center py-8 bg-white">
+        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+      </div>
+
       {/* Exam Preparation Section */}
-      <section id="sinav" className="py-16 md:py-24 bg-white">
+      <section id="sinav" className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-100 text-blue-700 mb-4">
-              <Award className="w-3 h-3" />
-              Sertifika Programı
-            </div>
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Goethe - TELC Sınavlarına Hazırlık
             </h2>
@@ -344,11 +259,10 @@ function BilgiPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Exam Types */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-900">Sınav Türleri</h3>
-              
+          <div className="max-w-5xl mx-auto">
+            <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">Sınav Türleri</h3>
+            
+            <div className="grid md:grid-cols-2 gap-6">
               <div className="border-l-4 border-red-500 bg-white rounded-lg shadow-md p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
@@ -378,321 +292,383 @@ function BilgiPage() {
                   İş görüşmeleri ve teknik pozisyonlar için yeterli seviye. Günlük iş iletişiminde kullanılabilir.
                 </p>
               </div>
-
-              <div className="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                <p className="text-sm text-amber-800">
-                  <strong>Not:</strong> Öğrenci eğer sınavı kazanabilecek bir durumdaysa ve akademik bir hedefi yoksa dersi bitirip sınava yönlendiririm. (Ders saatini bitirmesine gerek yok)
-                </p>
-              </div>
-            </div>
-
-            {/* Scoring System */}
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-gray-900">Geçme Notları</h3>
-              <p className="text-gray-600">Tüm Sınavlarda %60 ve üstü puan alanlar başarılı sayılır.</p>
-              
-              <div className="space-y-3">
-                {scoringSystem.map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-4">
-                    <div className={`w-3 h-12 rounded-full ${item.color}`}></div>
-                    <div className="flex-1">
-                      <div className="flex justify-between items-center">
-                        <span className="font-semibold text-gray-900">{item.grade}</span>
-                        <span className="text-sm text-gray-500">{item.range}</span>
-                      </div>
-                      <div className="h-2 bg-gray-200 rounded-full mt-1 overflow-hidden">
-                        <div className={`h-full ${item.color}`} style={{ width: `${(idx + 1) * 20}%` }}></div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-gray-900 text-white rounded-lg p-6 mt-6">
-                <h4 className="font-bold mb-2">Geçme Koşulu</h4>
-                <p className="text-gray-300">Her modülden en az %60 (60 puan) alınmalıdır.</p>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="flex items-center justify-center py-8 bg-white">
+        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+      </div>
+
       {/* Exam Structure */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Goethe Sınav Yapısı ve Değerlendirme
             </h2>
-            <p className="text-gray-600">Dört temel dil becerisinin kapsamlı değerlendirmesi</p>
+            <p className="text-gray-600">Her modülden en az %60 (60 puan) alınmalıdır.</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {examStructure.map((item, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-4">
-                  <item.icon className="w-8 h-8 text-white" />
+          <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+            <table className="w-full">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900">Modül</th>
+                  <th className="px-4 py-3 text-center text-sm font-semibold text-gray-900">A1</th>
+                  <th className="px-4 py-3 text-center text-sm font-semibold text-gray-900">A2</th>
+                  <th className="px-4 py-3 text-center text-sm font-semibold text-gray-900">B1</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {examStructure.map((item, idx) => (
+                  <tr key={idx} className="hover:bg-gray-50">
+                    <td className="px-4 py-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+                          <item.icon className="w-4 h-4 text-red-600" />
+                        </div>
+                        <span className="font-medium text-gray-900">{item.name}</span>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center text-sm text-gray-600">{item.a1}</td>
+                    <td className="px-4 py-3 text-center text-sm text-gray-600">{item.a2}</td>
+                    <td className="px-4 py-3 text-center text-sm text-gray-600">{item.b1}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Önemli Not */}
+          <div className="max-w-3xl mx-auto mt-8">
+            <div className="bg-green-50 rounded-lg shadow-md border border-green-200 overflow-hidden">
+              <div className="flex items-start gap-4 p-5">
+                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                  <Award className="w-6 h-6 text-green-600" />
                 </div>
-                <h3 className="text-lg font-bold mb-4">{item.name}</h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">A1:</span>
-                    <span className="font-medium">{item.a1}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">A2:</span>
-                    <span className="font-medium">{item.a2}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">B1:</span>
-                    <span className="font-medium">{item.b1}</span>
-                  </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-bold text-green-900 mb-2">Önemli Not</h4>
+                  <p className="text-sm text-green-800">
+                    Öğrenci eğer sınavı kazanabilecek bir durumdaysa ve akademik bir hedefi yoksa dersi bitirip sınava yönlendiririm. (Ders saatini bitirmesine gerek yok)
+                  </p>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="flex items-center justify-center py-8 bg-white">
+        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+      </div>
+
       {/* Teaching Methods */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-100 text-green-700 mb-4">
-              <BookOpen className="w-3 h-3" />
-              Eğitim Yöntemleri
-            </div>
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Eğitim Yöntemleri ve Ders Formatları
+              Eğitim Yöntemleri
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Esnek ve etkileşimli öğrenme deneyimi
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <div className="flex justify-center mb-8">
-              <div className="inline-flex bg-gray-100 rounded-lg p-1">
-                <button
-                  onClick={() => setActiveTab('online')}
-                  className={`px-6 py-2 rounded-md font-medium transition-colors ${activeTab === 'online' ? 'bg-white shadow-sm text-gray-900' : 'text-gray-600 hover:text-gray-900'}`}
-                >
-                  Online Dersler
-                </button>
-                <button
-                  onClick={() => setActiveTab('yuz-yuze')}
-                  className={`px-6 py-2 rounded-md font-medium transition-colors ${activeTab === 'yuz-yuze' ? 'bg-white shadow-sm text-gray-900' : 'text-gray-600 hover:text-gray-900'}`}
-                >
-                  Yüz Yüze Dersler
-                </button>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Online Dersler */}
+            <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-4">
+                <Video className="w-8 h-8 text-white" />
               </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Online Dersler</h3>
+              <ul className="space-y-3">
+                {teachingMethods[0].features.map((feature, fidx) => (
+                  <li key={fidx} className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-gray-600">{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            
-            {activeTab === 'online' && (
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-6">
-                    <Video className="w-10 h-10 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Online Dersler</h3>
-                  <ul className="space-y-4">
-                    {teachingMethods[0].features.map((feature, fidx) => (
-                      <li key={fidx} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="bg-gray-100 rounded-2xl p-8">
-                  <h4 className="font-bold text-gray-900 mb-4">Ders Formatları</h4>
-                  <div className="space-y-4">
-                    {courseFormats.map((format, fidx) => (
-                      <div key={fidx} className="bg-white rounded-lg p-4 shadow-sm">
-                        <div className="flex justify-between items-start mb-1">
-                          <span className="font-semibold text-gray-900">{format.title}</span>
-                          <span className="text-xs bg-gray-100 px-2 py-1 rounded">{format.subtitle}</span>
-                        </div>
-                        <p className="text-sm text-gray-500">{format.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
 
-            {activeTab === 'yuz-yuze' && (
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-6">
-                    <MapPin className="w-10 h-10 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Yüz Yüze Dersler</h3>
-                  <ul className="space-y-4">
-                    {teachingMethods[1].features.map((feature, fidx) => (
-                      <li key={fidx} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-600">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="bg-gray-100 rounded-2xl p-8">
-                  <h4 className="font-bold text-gray-900 mb-4">Ders Formatları</h4>
-                  <div className="space-y-4">
-                    {courseFormats.map((format, fidx) => (
-                      <div key={fidx} className="bg-white rounded-lg p-4 shadow-sm">
-                        <div className="flex justify-between items-start mb-1">
-                          <span className="font-semibold text-gray-900">{format.title}</span>
-                          <span className="text-xs bg-gray-100 px-2 py-1 rounded">{format.subtitle}</span>
-                        </div>
-                        <p className="text-sm text-gray-500">{format.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+            {/* Yüz Yüze Dersler */}
+            <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-4">
+                <MapPin className="w-8 h-8 text-white" />
               </div>
-            )}
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Yüz Yüze Dersler</h3>
+              <ul className="space-y-3">
+                {teachingMethods[1].features.map((feature, fidx) => (
+                  <li key={fidx} className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-gray-600">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="fiyat" className="py-16 md:py-24 bg-gray-900 text-white">
+      {/* Divider */}
+      <div className="flex items-center justify-center py-8 bg-gray-50">
+        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+      </div>
+
+      {/* Ders Formatları Section */}
+      <section className="py-12 md:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/10 text-white mb-4">
-              <Award className="w-3 h-3" />
-              Fiyatlandırma
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Ders Formatları
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Size en uygun öğrenme şeklini seçin
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mb-4">
+                <Users className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Özel Ders</h3>
+              <span className="inline-block px-2 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded mb-4">Birebir odaklanma</span>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                  <span>Kişiye özel müfredat hazırlama</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                  <span>Tamamen esnek ders saatleri</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                  <span>Öğrencinin hızına göre ilerleme</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                  <span>Anında geri bildirim ve düzeltme</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                  <span>Özel öğrenme materyalleri</span>
+                </li>
+              </ul>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+
+            <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center mb-4">
+                <Users className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Grup Dersi</h3>
+              <span className="inline-block px-2 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded mb-4">Ekonomik seçenek</span>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                  <span>Daha uygun fiyat avantajı</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                  <span>Grup dinamiği ile etkileşimli öğrenme</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                  <span>Akran öğrenmesi ve motivasyon</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                  <span>Gerçek hayat diyalog pratiği</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                  <span>Sosyal öğrenme ortamı</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center mb-4">
+                <Zap className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Karma (Hybrid)</h3>
+              <span className="inline-block px-2 py-1 bg-amber-100 text-amber-700 text-xs font-semibold rounded mb-4">Online + Yüz yüze</span>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                  <span>Her iki dünyanın en iyisi bir arada</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                  <span>Maksimum esneklik ve konfor</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                  <span>Yüz yüze pratik + online teori</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                  <span>Yoğun programa göre ayarlanabilir</span>
+                </li>
+                <li className="flex items-start gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" />
+                  <span>Teknoloji ve kişisel dokunuş dengesi</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="flex items-center justify-center py-8 bg-white">
+        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+      </div>
+
+      {/* Pricing Section */}
+      <section id="fiyat" className="py-12 md:py-16 bg-white text-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Fiyatlandırma ve Paketler
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-500 max-w-2xl mx-auto">
               Kaliteli eğitim, ekonomik fiyatlar
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-              <div className="w-14 h-14 rounded-full bg-red-500/20 flex items-center justify-center mb-4">
-                <Users className="w-7 h-7 text-red-400" />
+          <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+            <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6">
+              <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                <Users className="w-7 h-7 text-red-600" />
               </div>
-              <h3 className="text-2xl font-bold">Özel Dersler</h3>
-              <p className="text-gray-400 mb-6">Uygun fiyatlı birebir eğitim seçeneği</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Özel Dersler</h3>
+              <p className="text-gray-500 mb-6">Uygun fiyatlı birebir eğitim seçeneği</p>
               <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
+                <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                   Kişiselleştirilmiş program
                 </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
+                <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                   Bireysel ilerleme takibi
                 </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
+                <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                   Esnek zamanlama
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6">
-              <div className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center mb-4">
-                <Users className="w-7 h-7 text-blue-400" />
+            <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6">
+              <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                <Users className="w-7 h-7 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold">Grup Dersleri</h3>
-              <p className="text-gray-400 mb-6">Daha da uygun fiyatlarla kaliteli eğitim</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Grup Dersleri</h3>
+              <p className="text-gray-500 mb-6">Daha da uygun fiyatlarla kaliteli eğitim</p>
               <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
+                <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                   Grup dinamiği ile etkileşim
                 </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
+                <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                   Ekonomik seçenek
                 </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-400" />
+                <li className="flex items-center gap-2 text-sm text-gray-600">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                   Sosyal öğrenme ortamı
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="mt-12 text-center">
-            <div className="inline-block bg-white/10 rounded-lg p-6">
-              <p className="text-sm text-gray-400 mb-2">Piyasa Karşılaştırması</p>
-              <div className="flex items-center gap-8">
-                <div>
-                  <p className="text-xs text-gray-500">Piyasa Ortalaması</p>
-                  <p className="text-xl font-bold text-gray-400">700-4000 TL/saat</p>
-                </div>
-                <div className="w-px h-12 bg-white/20"></div>
-                <div>
-                  <p className="text-xs text-gray-500">Bu Kurs</p>
-                  <p className="text-xl font-bold text-green-400">Rekabetçi Fiyat</p>
+          <div className="mt-12">
+            <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+              <div className="p-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-4 text-center">Piyasa Karşılaştırması</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-red-50 rounded-lg p-4 text-center">
+                    <p className="text-xs text-red-600 mb-1">Piyasa Ortalaması</p>
+                    <p className="text-lg font-bold text-red-600">700-4000 TL/saat</p>
+                  </div>
+                  <div className="bg-green-50 rounded-lg p-4 text-center">
+                    <p className="text-xs text-green-600 mb-1">Bu Kurs</p>
+                    <p className="text-lg font-bold text-green-600">Rekabetçi Fiyat</p>
+                  </div>
                 </div>
               </div>
+              <div className="bg-gray-50 px-6 py-3">
+                <p className="text-xs text-gray-500 text-center">
+                  Fiyatlandırma: Ders saatine, seviyeye ve formata göre değişkenlik gösterir. Detaylı bilgi için iletişime geçin.
+                </p>
+              </div>
             </div>
-            <p className="text-sm text-gray-500 mt-4">
-              Fiyatlandırma: Ders saatine, seviyeye ve formata göre değişkenlik gösterir. Detaylı bilgi için iletişime geçin.
-            </p>
           </div>
         </div>
       </section>
 
       {/* Instructor Profile */}
-      <section id="egitmen" className="py-16 md:py-24 bg-white">
+      <section id="egitmen" className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-purple-100 text-purple-700 mb-4">
-              <GraduationCap className="w-3 h-3" />
-              Eğitmen
-            </div>
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              OZAN AKGÜN
+              Ozan Akgün
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Akademik Geçmiş ve İş Hayatı
-            </p>
           </div>
 
-          {/* Timeline */}
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gray-200 md:-translate-x-px"></div>
-              
-              {timeline.map((item, idx) => (
-                <div key={idx} className={`relative flex items-start gap-8 mb-8 ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                  <div className="hidden md:block w-1/2"></div>
-                  <div className="absolute left-4 md:left-1/2 w-8 h-8 bg-red-600 rounded-full border-4 border-white shadow-lg md:-translate-x-1/2 flex items-center justify-center">
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
-                  </div>
-                  <div className="ml-16 md:ml-0 md:w-1/2 md:px-8">
-                    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-4 border border-gray-100">
-                      <span className="inline-block px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded mb-2">{item.year}</span>
-                      <h4 className="font-bold text-gray-900">{item.title}</h4>
-                      <p className="text-sm text-gray-600">{item.description}</p>
-                    </div>
-                  </div>
+          {/* Accordion */}
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-white rounded-lg shadow-md border border-gray-100 overflow-hidden">
+              <button
+                onClick={() => setOpenAccordion(openAccordion === 100 ? null : 100)}
+                className="w-full flex items-center gap-4 p-5 text-left hover:bg-gray-50 transition-colors"
+              >
+                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                  <Briefcase className="w-6 h-6 text-purple-600" />
                 </div>
-              ))}
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900">Akademik Geçmiş ve İş Hayatı</h3>
+                </div>
+                <div className={`w-6 h-6 flex items-center justify-center transition-transform duration-200 ${openAccordion === 100 ? 'rotate-180' : ''}`}>
+                  <ChevronRight className="w-5 h-5 text-gray-400 rotate-90" />
+                </div>
+              </button>
+              <div 
+                className={`overflow-hidden transition-all duration-200 ${openAccordion === 100 ? 'max-h-96' : 'max-h-0'}`}
+              >
+                <div className="px-5 pb-5 pt-0">
+                  <p className="text-gray-600 leading-relaxed text-justify">
+                    Cağaloğlu Anadolu Lisesi'nde Almanca eğitimi aldı (2003), ardından Aachen/Almanya'da gerçek dil ortamında pratik tecrübe kazandı (2005-07). YDT sınavında yüksek başarı göstererek akademik dil yeterliliğini kanıtladı (2008). Goethe-Zertifikat C1 sertifikası ile ileri düzey Almanca yeterliliğini belgeledi (2015). 2022'den günümüze birçok yabancı dil kurumunda Almanca öğretmenliği yapmakta olup, 2024-2025 yılları arasında Wayfair firmasında müşteri temsilcisi olarak da çalışma deneyimi bulunmaktadır.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="flex items-center justify-center py-8 bg-white">
+        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+      </div>
+
       {/* Teaching Approach */}
-      <section className="py-16 md:py-24 bg-gray-50">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Mesleki Tecrübe ve Öretim Yaklaşımı
+              Mesleki Tecrübe ve Öğretim Yaklaşımı
             </h2>
-            <p className="text-gray-600">4 yıllık kurumsal deneyim ve çeşitli sektörlerden öğrenci portföyü</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {teachingApproach.map((item, idx) => (
               <div key={idx} className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
                 <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-4">
@@ -705,26 +681,50 @@ function BilgiPage() {
           </div>
 
           <div className="mt-12">
-            <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">Çeşitli Sektörlerden Öğrenciler</h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {['Mühendisler', 'Doktorlar', 'Akademisyenler', 'İş İnsanları', 'Öğrenciler', 'Aile Birleşimi'].map((sector, idx) => (
-                <span key={idx} className="px-4 py-2 bg-gray-200 text-gray-700 text-sm font-medium rounded-full">
-                  {sector}
-                </span>
-              ))}
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">Çeşitli Sektörlerden Öğrenciler</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="bg-white rounded-lg shadow-md p-5 text-center border border-gray-100">
+                <div className="w-12 h-12 mx-auto rounded-full bg-blue-100 flex items-center justify-center mb-3">
+                  <Wrench className="w-6 h-6 text-blue-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Mühendisler ve Teknik Personel</h4>
+                <p className="text-xs text-gray-500">Almanya'da çalışmak isteyen mühendisler ve teknik çalışanlar için özel hazırlık programları</p>
+              </div>
+              <div className="bg-white rounded-lg shadow-md p-5 text-center border border-gray-100">
+                <div className="w-12 h-12 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-3">
+                  <Stethoscope className="w-6 h-6 text-green-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Doktorlar ve Akademisyenler</h4>
+                <p className="text-xs text-gray-500">Sağlık sektörü ve akademik kariyer hedefleyenler için yoğun dil eğitimi</p>
+              </div>
+              <div className="bg-white rounded-lg shadow-md p-5 text-center border border-gray-100">
+                <div className="w-12 h-12 mx-auto rounded-full bg-amber-100 flex items-center justify-center mb-3">
+                  <Briefcase className="w-6 h-6 text-amber-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">İş İnsanları ve Profesyoneller</h4>
+                <p className="text-xs text-gray-500">İş dünyasında kariyer yapmak isteyen profesyoneller için iş Almancası</p>
+              </div>
+              <div className="bg-white rounded-lg shadow-md p-5 text-center border border-gray-100">
+                <div className="w-12 h-12 mx-auto rounded-full bg-red-100 flex items-center justify-center mb-3">
+                  <Users className="w-6 h-6 text-red-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Öğrenciler ve Aileler</h4>
+                <p className="text-xs text-gray-500">Aile birleşimi ve eğitim amaçlı Almanca öğrenmek isteyenler</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="flex items-center justify-center py-8 bg-white">
+        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+      </div>
+
       {/* Target Groups */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-100 text-amber-700 mb-4">
-              <Target className="w-3 h-3" />
-              Hedef Kitle
-            </div>
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Kimler İçin Uygun?
             </h2>
@@ -733,135 +733,113 @@ function BilgiPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="max-w-3xl mx-auto space-y-3">
             {targetGroups.map((group, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-100">
-                <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-4 group-hover:bg-red-100 transition-colors">
-                  <group.icon className="w-6 h-6 text-gray-600" />
+              <div 
+                key={idx} 
+                className="bg-white rounded-lg shadow-md border border-gray-100 overflow-hidden"
+              >
+                <button
+                  onClick={() => setOpenAccordion(openAccordion === idx ? null : idx)}
+                  className="w-full flex items-center gap-4 p-5 text-left hover:bg-gray-50 transition-colors"
+                >
+                  <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                    <group.icon className="w-5 h-5 text-red-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-900">{group.title}</h3>
+                  </div>
+                  <div className={`w-6 h-6 flex items-center justify-center transition-transform duration-200 ${openAccordion === idx ? 'rotate-180' : ''}`}>
+                    <ChevronRight className="w-5 h-5 text-gray-400 rotate-90" />
+                  </div>
+                </button>
+                <div 
+                  className={`overflow-hidden transition-all duration-200 ${openAccordion === idx ? 'max-h-80' : 'max-h-0'}`}
+                >
+                  <div className="px-3 pb-3 pt-0">
+                    <span className="inline-block px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded mb-2">{group.target}</span>
+                    <p className="text-sm text-gray-600">{group.description}</p>
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold mb-2">{group.title}</h3>
-                <span className="inline-block px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded mb-3">{group.target}</span>
-                <p className="text-sm text-gray-600">{group.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-100 text-green-700 mb-4">
-              <Star className="w-3 h-3" />
-              Başarı Hikayeleri
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Başarı Hikayeleri ve Öğrenci Görüşleri
-            </h2>
-            <p className="text-gray-600">Gerçek başarı öyküleri ve öğrenci deneyimleri</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition-shadow">
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-6 italic">&ldquo;{testimonial.text}&rdquo;</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white font-bold">
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">{testimonial.name}</p>
-                    <p className="text-sm text-gray-500">{testimonial.role}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <div className="inline-block bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg px-8 py-4">
-              <p className="font-semibold">Goethe Sınav Başarı Oranı: %60+</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Divider */}
+      <div className="flex items-center justify-center py-8 bg-white">
+        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+      </div>
 
       {/* Why Choose Us */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-100 text-red-700 mb-4">
-              <Award className="w-3 h-3" />
-              Neden Biz?
-            </div>
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Neden Bu Kurs?
             </h2>
             <p className="text-gray-600">Sizi başarıya götüren farklılıklar</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {whyChooseUs.map((item, idx) => (
-              <div key={idx}>
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-6 hover:scale-110 transition-transform">
+              <div key={idx} className="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition-shadow">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-4 hover:scale-110 transition-transform">
                   <item.icon className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
                 <span className="inline-block px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded mb-3">{item.subtitle}</span>
-                <p className="text-gray-600">{item.description}</p>
+                <p className="text-sm text-gray-600">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="flex items-center justify-center py-8 bg-white">
+        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
+      </div>
+
       {/* CTA Section */}
-      <section id="iletisim" className="py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-red-900"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1920&q=80')] bg-cover bg-center opacity-10"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section id="iletisim" className="py-12 md:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-              BAŞLAMAYA HAZIR MISINIZ?
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
+              Başlamaya Hazır mısınız?
             </h2>
-            <p className="text-xl text-gray-300 mb-4">
+            <p className="text-base font-semibold text-gray-900 mb-3">
               Almanca Öğrenme Yolculuğunuza Başlayın!
             </p>
-            <p className="text-gray-400 mb-12 max-w-2xl mx-auto">
+            <p className="text-base text-gray-600 mb-12 max-w-2xl mx-auto">
               Online veya yüz yüze dersler için bilgi alın. Ücretsiz seviye tespit sınavı ve danışmanlık ile size en uygun programı birlikte belirleyelim.
             </p>
 
-            <div className="grid sm:grid-cols-3 gap-6 mb-12">
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <Phone className="w-8 h-8 text-red-400 mx-auto mb-4" />
-                <h4 className="font-semibold text-white mb-2">İletişim</h4>
-                <p className="text-sm text-gray-400">Bize ulaşın, sorularınızı yanıtlayalım</p>
+            <div className="grid sm:grid-cols-3 gap-5 mb-12">
+              <div className="bg-gray-50 rounded-lg p-6">
+                <Phone className="w-8 h-8 text-red-600 mx-auto mb-4" />
+                <h4 className="font-semibold text-gray-900 mb-2">İletişim</h4>
+                <p className="text-sm text-gray-500">Bize ulaşın, sorularınızı yanıtlayalım</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <FileText className="w-8 h-8 text-red-400 mx-auto mb-4" />
-                <h4 className="font-semibold text-white mb-2">Ücretsiz Seviye Tespiti</h4>
-                <p className="text-sm text-gray-400">Mevcut dil seviyenizi belirleyelim</p>
+              <div className="bg-gray-50 rounded-lg p-6">
+                <FileText className="w-8 h-8 text-red-600 mx-auto mb-4" />
+                <h4 className="font-semibold text-gray-900 mb-2">Ücretsiz Seviye Tespiti</h4>
+                <p className="text-sm text-gray-500">Mevcut dil seviyenizi belirleyelim</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-                <Calendar className="w-8 h-8 text-red-400 mx-auto mb-4" />
-                <h4 className="font-semibold text-white mb-2">Program Planlama</h4>
-                <p className="text-sm text-gray-400">Size özel program oluşturalım</p>
+              <div className="bg-gray-50 rounded-lg p-6">
+                <Calendar className="w-8 h-8 text-red-600 mx-auto mb-4" />
+                <h4 className="font-semibold text-gray-900 mb-2">Program Planlama</h4>
+                <p className="text-sm text-gray-500">Size özel program oluşturalım</p>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+905322700666" className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+            <div className="flex flex-col gap-3 justify-center max-w-sm mx-auto">
+              <a href="https://wa.me/905322700666?text=%C3%9Ccretsiz%20deneme%20dersi%20i%C3%A7in%20bilgi%20almak%20istiyorum" className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
                 <Calendar className="w-5 h-5" />
                 Ücretsiz Deneme Dersi
               </a>
-              <a href="tel:+905322700666" className="border border-white/30 text-white hover:bg-white/10 px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+              <a href="https://wa.me/905322700666?text=Almanca%20dersi%20ile%20ilgili%20bilgi%20almak%20istiyorum" className="border border-gray-300 text-gray-900 hover:bg-gray-50 px-8 py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
                 <Phone className="w-5 h-5" />
                 İletişime Geçin
               </a>
@@ -870,64 +848,6 @@ function BilgiPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-950 text-gray-400 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-gray-900 to-red-600 flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">A</span>
-                </div>
-                <span className="font-bold text-lg text-white">Almanca Kursu</span>
-              </div>
-              <p className="text-sm">
-                Ozan Akgün ile profesyonel Almanca eğitimi. A1, A2, B1 seviyeleri ve Goethe sınav hazırlığı.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-4">Hızlı Bağlantılar</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#seviyeler" className="hover:text-red-500 transition-colors">Kurs Seviyeleri</a></li>
-                <li><a href="#sinav" className="hover:text-red-500 transition-colors">Sınav Hazırlığı</a></li>
-                <li><a href="#egitmen" className="hover:text-red-500 transition-colors">Eğitmen</a></li>
-                <li><a href="#fiyat" className="hover:text-red-500 transition-colors">Fiyatlandırma</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-4">İletişim</h4>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  <span>+90 532 270 0666</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  <span>oznkgun@gmail.com</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold text-white mb-4">Sertifikalar</h4>
-              <ul className="space-y-2 text-sm">
-                <li className="flex items-center gap-2">
-                  <BadgeCheck className="w-4 h-4 text-green-500" />
-                  <span>Goethe C1 Sertifikalı</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <BadgeCheck className="w-4 h-4 text-green-500" />
-                  <span>4+ Yıl Tecrübe</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-8">
-            <div className="text-center text-sm">
-              <p>&copy; 2024 Almanca Dil Kursu - Ozan Akgün. Tüm hakları saklıdır.</p>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
