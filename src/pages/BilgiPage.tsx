@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react'
 import { 
   GraduationCap, Clock, Award, BookOpen, Users, Video, MapPin, 
-  CheckCircle, Phone, Calendar, Star, TrendingUp, 
-  Globe, FileText, Headphones, PenTool, MessageCircle, 
-  ChevronRight, BadgeCheck, Target, Zap, Heart,
-  Briefcase, Wrench, Stethoscope
+  CheckCircle, Phone, Calendar, TrendingUp, 
+  FileText, Headphones, PenTool, MessageCircle, 
+  ChevronRight, BadgeCheck, Heart, Zap
 } from 'lucide-react'
 import './BilgiPage.css'
 
 function BilgiPage() {
-  const [openAccordion, setOpenAccordion] = useState<number | null>(null)
   const [showUpButton, setShowUpButton] = useState(false)
 
   useEffect(() => {
@@ -67,9 +65,7 @@ function BilgiPage() {
       icon: Video,
       features: [
         'Zoom/Meet üzerinden canlı etkileşimli dersler',
-        'İnteraktif Beyaz Tahta',
-        'Dijital araçlarla zenginleştirilmiş içerik',
-        'PDF, ses dosyaları ve interaktif alıştırmalar',
+        'Zengin eğitim materyalleri ve kaynak paylaşımı',
         'Programınıza uygun ders saatleri',
         'Her yerden, her zaman erişim imkanı'
       ]
@@ -84,31 +80,6 @@ function BilgiPage() {
         'Haftalık ödevler ve detaylı geri bildirim'
       ]
     }
-  ]
-
-  const teachingApproach = [
-    { title: 'Öğrenci Odaklı', description: 'Her öğrencinin ihtiyaçlarına göre özelleştirilmiş program', icon: Target },
-    { title: 'Esnek Uyum', description: 'Farklı öğrenme stillerine ve hedeflere uyum sağlama', icon: Zap },
-    { title: 'Pratik Odaklı', description: 'Gerçek hayat senaryoları ile konuşma pratiği', icon: Globe },
-    { title: 'Sınav Stratejileri', description: 'Goethe sınavlarına özel hazırlık teknikleri', icon: BadgeCheck },
-  ]
-
-  const targetGroups = [
-    { title: 'Aile Birleşimi İçin', target: 'A1 Sertifikası', description: 'Almanya\'da aile birleşimi vizesi almak isteyenler için A1 seviyesi zorunludur. Eş ve çocuk kabulü için devlet tarafından talep edilen bu sertifika, temel iletişim becerilerini kanıtlar. Goethe veya TELC sınavlarına yönelik hazırlık programlarımız sayesinde kısa sürede hedefinize ulaşabilirsiniz. Dersler hem online hem yüz yüze seçenekleriyle sunulmaktadır.', icon: Heart },
-    { title: 'Teknik Çalışanlar', target: 'A2 Sertifikası', description: 'Almanya\'da mühendis, teknisyen veya teknik personel olarak çalışmak isteyenler için A2 seviyesi gereklidir. İş görüşmelerinde ve günlük iş iletişiminde yeterli olacak seviyede Almanca öğrenimi sağlanır. Mesleki terimler ve iş hayatında kullanılan pratik ifadeler ders içeriğine dahildir.', icon: TrendingUp },
-    { title: 'İşe Kabul İçin', target: 'A1 veya A2', description: 'Almanya\'da işe başlamak için işverenler tarafından talep edilen dil sertifikalarını almanız gerekmektedir. A1 seviyesi giriş pozisyonları için yeterliyken, A2 seviyesi daha kapsamlı iş tanımları için önerilir. Sınav odaklı eğitim programlarımızla iş hayatına hazırlıklı olun.', icon: Briefcase },
-    { title: 'Az Almanca Gerektiren İşler', target: 'Temel iletişim yeterli', description: 'Temizlik, depo çalışanı, restoran yardımcısı gibi az Almanca gerektiren pozisyonlar için temel iletişim becerileri yeterlidir. Günlük rutinleri anlama, basit talimatları takip etme ve temel ihtiyaçları ifade etme becerileri kazandırılır. Pratik odaklı derslerle hızla iş hayatına atılabilirsiniz.', icon: CheckCircle },
-    { title: 'Pratik Kullanım İsteyenler', target: 'Günlük konuşma odaklı', description: 'Akademik veya sınav hedefi olmadan, sadece günlük hayatta Almanca konuşmak isteyenler için özel programlar hazırlıyoruz. Alışveriş, restoran, sosyal ortamlar gibi senaryolarda pratik yaparak özgüven kazanırsınız. Esnek ders saatleri ve birebir özel ders seçenekleri mevcuttur.', icon: MessageCircle },
-    { title: 'Günlük İletişim', target: 'Günlük hayat odaklı', description: 'Tatil, seyahat veya Almanya\'da yaşayan yakınlarınızla iletişim kurmak için Almanca öğrenmek isteyenler için uygundur. Temel kelime haznesi, basit diyaloglar ve günlük rutinleri anlatma becerileri üzerinde durulur. Gerçek hayat senaryoları ile eğlenceli ve pratik bir öğrenme deneyimi sunulmaktadır.', icon: Globe },
-  ]
-
-  const whyChooseUs = [
-    { title: 'Akademik + Pratik Deneyim', subtitle: 'Teori ve pratik bir arada', description: 'Hem teorik bilgi hem de gerçek hayat tecrübesi. Almanya\'da yaşama deneyimi ile kültürel bağlamda öğrenme.', icon: GraduationCap },
-    { title: 'Kişiselleştirilmiş Öğrenme', subtitle: 'Size özel müfredat', description: 'Her öğrencinin ihtiyaçlarına göre özelleştirilmiş program. Farklı öğrenme stillerine uyum sağlama.', icon: Target },
-    { title: 'Esnek Ders Formatları', subtitle: 'Size uygun format', description: 'Online veya yüz yüze, özel veya grup dersleri. Programınıza uygun esnek zamanlama seçenekleri.', icon: Zap },
-    { title: 'Uygun Fiyat Politikası', subtitle: 'Bütçe dostu', description: 'Kaliteli eğitimi ekonomik fiyatlarla sunma. Piyasa ortalamasının altında rekabetçi fiyatlandırma.', icon: Award },
-    { title: 'Sınav Odaklı Hazırlık', subtitle: 'Hedefe yönelik', description: 'Goethe sınavlarına özel stratejiler ve pratikler. Sınav formatına uygun hazırlık materyalleri.', icon: BadgeCheck },
-    { title: 'Öğrenci Başarısı Odaklı', subtitle: 'Sonuç odaklı', description: 'Sertifika alana kadar destek ve rehberlik. Öğrenci başarısı odaklı yaklaşım ve sürekli geri bildirim.', icon: Star },
   ]
 
   return (
@@ -135,28 +106,29 @@ function BilgiPage() {
                 <h1 className="text-[clamp(1.5rem,6vw,3rem)] font-bold text-gray-900 mb-1 whitespace-nowrap">
                   Almanca Dil Kursu
                 </h1>
-                <h2 className="text-[clamp(1rem,4vw,1.75rem)] font-bold text-gray-900 mb-3 whitespace-nowrap">
+                <h2 className="text-[clamp(1rem,4vw,1.75rem)] font-bold text-gray-900 mb-4 whitespace-nowrap">
                   Ozan Akgün
                 </h2>
-                <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-red-100 text-red-700 text-sm mb-3">
-                  <Award className="w-4 h-4 flex-shrink-0" />
-                  <span>Goethe C1 Sertifikalı</span>
-                </div>
-                <p className="text-sm text-gray-600 mb-4">
-                  A1-A2-B1 | Online & Yüz Yüze | Goethe TELC Hazırlık
-                </p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  <div className="flex items-center gap-1.5 text-gray-700 text-sm">
+                <div className="flex flex-col items-center gap-2 mb-6">
+                  <div className="flex items-center gap-2 text-gray-700 text-sm">
                     <BadgeCheck className="w-4 h-4 text-green-600 flex-shrink-0" />
-                    <span>4+ Yıl</span>
+                    <span>A1-A2-B1 Sertifika Kursları</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-gray-700 text-sm">
+                  <div className="flex items-center gap-2 text-gray-700 text-sm">
                     <BadgeCheck className="w-4 h-4 text-green-600 flex-shrink-0" />
-                    <span>C1 Sertifika</span>
+                    <span>Online & Yüzyüze Dersler</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-gray-700 text-sm">
+                  <div className="flex items-center gap-2 text-gray-700 text-sm">
                     <BadgeCheck className="w-4 h-4 text-green-600 flex-shrink-0" />
-                    <span>%60+ Başarı</span>
+                    <span>Goethe & TELC Hazırlık Dersleri</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-700 text-sm">
+                    <BadgeCheck className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <span>4+ Yıl Deneyim</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-700 text-sm">
+                    <BadgeCheck className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <span>C1 Sertifikalı Eğitim</span>
                   </div>
                 </div>
               </div>
@@ -171,13 +143,21 @@ function BilgiPage() {
                 <Award className="w-5 h-5" />
                 Sınav Hazırlığı
               </a>
-              <a href="#egitmen" className="bg-purple-100 hover:bg-purple-200 text-purple-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
-                <Users className="w-5 h-5" />
-                Eğitmen
+              <a href="#sinav-yapisi" className="bg-amber-100 hover:bg-amber-200 text-amber-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+                <FileText className="w-5 h-5" />
+                Sınav Yapısı
               </a>
-              <a href="#fiyat" className="bg-amber-100 hover:bg-amber-200 text-amber-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
-                <TrendingUp className="w-5 h-5" />
-                Fiyatlandırma
+              <a href="#egitim-yontemleri" className="bg-pink-100 hover:bg-pink-200 text-pink-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+                <Video className="w-5 h-5" />
+                Eğitim Yöntemleri
+              </a>
+              <a href="#ders-formatlari" className="bg-cyan-100 hover:bg-cyan-200 text-cyan-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+                <Users className="w-5 h-5" />
+                Ders Formatları
+              </a>
+              <a href="#egitmen" className="bg-purple-100 hover:bg-purple-200 text-purple-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
+                <GraduationCap className="w-5 h-5" />
+                Eğitmen
               </a>
               <a href="#iletisim" className="bg-green-100 hover:bg-green-200 text-green-700 px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors">
                 <Phone className="w-5 h-5" />
@@ -231,19 +211,8 @@ function BilgiPage() {
             ))}
           </div>
 
-
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="flex items-center justify-center py-8 bg-white">
-        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
-      </div>
-
-      {/* Exam Preparation Section */}
-      <section id="sinav" className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+          {/* Goethe - TELC Sınavlarına Hazırlık */}
+          <div id="sinav" className="text-center mt-16 mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Goethe - TELC Sınavlarına Hazırlık
             </h2>
@@ -252,8 +221,8 @@ function BilgiPage() {
             </p>
           </div>
 
+          {/* Sınav Türleri */}
           <div className="max-w-5xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">Sınav Türleri</h3>
             
             <div className="grid md:grid-cols-2 gap-6">
               <div className="border-l-4 border-red-500 bg-white rounded-lg shadow-md p-6">
@@ -296,13 +265,13 @@ function BilgiPage() {
       </div>
 
       {/* Exam Structure */}
-      <section className="py-12 md:py-16 bg-white">
+      <section id="sinav-yapisi" className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Goethe Sınav Yapısı ve Değerlendirme
             </h2>
-            <p className="text-gray-600">Her modülden en az %60 (60 puan) alınmalıdır.</p>
+            <p className="text-gray-600">Sınavda toplamda %60 (60 puan) alınmalıdır.</p>
           </div>
 
           <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
@@ -343,9 +312,9 @@ function BilgiPage() {
                   <Award className="w-6 h-6 text-green-600" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="text-lg font-bold text-green-900 mb-2">Önemli Not</h4>
+                  <h4 className="text-lg font-bold text-green-900 mb-2">Esnek Program Avantajı</h4>
                   <p className="text-sm text-green-800">
-                    Öğrenci eğer sınavı kazanabilecek bir durumdaysa ve akademik bir hedefi yoksa dersi bitirip sınava yönlendiririm. (Ders saatini bitirmesine gerek yok)
+                    Akademik bir zorunluluğu olmayan ve sınav için yeterli seviyede olan öğrenciler, ders saatini tamamlamadan doğrudan sınava yönlendirilebilir. Söz konusu saatlerin tamamlanması şart değildir.
                   </p>
                 </div>
               </div>
@@ -360,7 +329,7 @@ function BilgiPage() {
       </div>
 
       {/* Teaching Methods */}
-      <section className="py-12 md:py-16 bg-white">
+      <section id="egitim-yontemleri" className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -414,7 +383,7 @@ function BilgiPage() {
       </div>
 
       {/* Ders Formatları Section */}
-      <section className="py-12 md:py-16 bg-gray-50">
+      <section id="ders-formatlari" className="py-12 md:py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -519,281 +488,75 @@ function BilgiPage() {
         </div>
       </section>
 
-      {/* Divider */}
-      <div className="flex items-center justify-center py-8 bg-white">
-        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
-      </div>
-
-      {/* Pricing Section */}
-      <section id="fiyat" className="py-12 md:py-16 bg-white text-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Fiyatlandırma ve Paketler
-            </h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">
-              Kaliteli eğitim, ekonomik fiyatlar
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6">
-              <div className="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center mb-4">
-                <Users className="w-7 h-7 text-red-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Özel Dersler</h3>
-              <p className="text-gray-500 mb-6">Uygun fiyatlı birebir eğitim seçeneği</p>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  Kişiselleştirilmiş program
-                </li>
-                <li className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  Bireysel ilerleme takibi
-                </li>
-                <li className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  Esnek zamanlama
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-md border border-gray-100 p-6">
-              <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-                <Users className="w-7 h-7 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Grup Dersleri</h3>
-              <p className="text-gray-500 mb-6">Daha da uygun fiyatlarla kaliteli eğitim</p>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  Grup dinamiği ile etkileşim
-                </li>
-                <li className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  Ekonomik seçenek
-                </li>
-                <li className="flex items-center gap-2 text-sm text-gray-600">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  Sosyal öğrenme ortamı
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-12">
-            <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
-              <div className="p-6">
-                <h4 className="text-lg font-bold text-gray-900 mb-4 text-center">Piyasa Karşılaştırması</h4>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-red-50 rounded-lg p-4 text-center">
-                    <p className="text-xs text-red-600 mb-1">Piyasa Ortalaması</p>
-                    <p className="text-lg font-bold text-red-600">700-4000 TL/saat</p>
-                  </div>
-                  <div className="bg-green-50 rounded-lg p-4 text-center">
-                    <p className="text-xs text-green-600 mb-1">Bu Kurs</p>
-                    <p className="text-lg font-bold text-green-600">Rekabetçi Fiyat</p>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-gray-50 px-6 py-3">
-                <p className="text-xs text-gray-500 text-center">
-                  Fiyatlandırma: Ders saatine, seviyeye ve formata göre değişkenlik gösterir. Detaylı bilgi için iletişime geçin.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Instructor Profile */}
       <section id="egitmen" className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
               Ozan Akgün
             </h2>
-          </div>
-
-          {/* Accordion */}
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-white rounded-lg shadow-md border border-gray-100 overflow-hidden">
-              <button
-                onClick={() => setOpenAccordion(openAccordion === 100 ? null : 100)}
-                className="w-full flex items-center gap-4 p-5 text-left hover:bg-gray-50 transition-colors"
-              >
-                <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
-                  <Briefcase className="w-6 h-6 text-purple-600" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-gray-900">Akademik Geçmiş ve İş Hayatı</h3>
-                </div>
-                <div className={`w-6 h-6 flex items-center justify-center transition-transform duration-200 ${openAccordion === 100 ? 'rotate-180' : ''}`}>
-                  <ChevronRight className="w-5 h-5 text-gray-400 rotate-90" />
-                </div>
-              </button>
-              <div 
-                className={`overflow-hidden transition-all duration-200 ${openAccordion === 100 ? 'max-h-96' : 'max-h-0'}`}
-              >
-                <div className="px-5 pb-5 pt-0">
-                  <p className="text-gray-600 leading-relaxed text-justify">
-                    Cağaloğlu Anadolu Lisesi'nde Almanca eğitimi aldı (2003), ardından Aachen/Almanya'da gerçek dil ortamında pratik tecrübe kazandı (2005-07). YDT sınavında yüksek başarı göstererek akademik dil yeterliliğini kanıtladı (2008). Goethe-Zertifikat C1 sertifikası ile ileri düzey Almanca yeterliliğini belgeledi (2015). 2022'den günümüze birçok yabancı dil kurumunda Almanca öğretmenliği yapmakta olup, 2024-2025 yılları arasında Wayfair firmasında müşteri temsilcisi olarak da çalışma deneyimi bulunmaktadır.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="flex items-center justify-center py-8 bg-white">
-        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
-      </div>
-
-      {/* Teaching Approach */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Mesleki Tecrübe ve Öğretim Yaklaşımı
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {teachingApproach.map((item, idx) => (
-              <div key={idx} className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-4">
-                  <item.icon className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-600">{item.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12">
-            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">Çeşitli Sektörlerden Öğrenciler</h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              <div className="bg-white rounded-lg shadow-md p-5 text-center border border-gray-100">
-                <div className="w-12 h-12 mx-auto rounded-full bg-blue-100 flex items-center justify-center mb-3">
-                  <Wrench className="w-6 h-6 text-blue-600" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Mühendisler ve Teknik Personel</h4>
-                <p className="text-xs text-gray-500">Almanya'da çalışmak isteyen mühendisler ve teknik çalışanlar için özel hazırlık programları</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-md p-5 text-center border border-gray-100">
-                <div className="w-12 h-12 mx-auto rounded-full bg-green-100 flex items-center justify-center mb-3">
-                  <Stethoscope className="w-6 h-6 text-green-600" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Doktorlar ve Akademisyenler</h4>
-                <p className="text-xs text-gray-500">Sağlık sektörü ve akademik kariyer hedefleyenler için yoğun dil eğitimi</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-md p-5 text-center border border-gray-100">
-                <div className="w-12 h-12 mx-auto rounded-full bg-amber-100 flex items-center justify-center mb-3">
-                  <Briefcase className="w-6 h-6 text-amber-600" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">İş İnsanları ve Profesyoneller</h4>
-                <p className="text-xs text-gray-500">İş dünyasında kariyer yapmak isteyen profesyoneller için iş Almancası</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-md p-5 text-center border border-gray-100">
-                <div className="w-12 h-12 mx-auto rounded-full bg-red-100 flex items-center justify-center mb-3">
-                  <Users className="w-6 h-6 text-red-600" />
-                </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Öğrenciler ve Aileler</h4>
-                <p className="text-xs text-gray-500">Aile birleşimi ve eğitim amaçlı Almanca öğrenmek isteyenler</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="flex items-center justify-center py-8 bg-white">
-        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
-      </div>
-
-      {/* Target Groups */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Kimler İçin Uygun?
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Farklı hedefler ve ihtiyaçlar için özelleştirilmiş çözümler
-            </p>
+            <h3 className="text-xl md:text-2xl font-bold text-gray-600 mb-8 text-center">
+              Akademik Geçmiş ve İş Hayatı
+            </h3>
           </div>
 
           <div className="max-w-3xl mx-auto space-y-3">
-            {targetGroups.map((group, idx) => (
-              <div 
-                key={idx} 
-                className="bg-white rounded-lg shadow-md border border-gray-100 overflow-hidden"
-              >
-                <button
-                  onClick={() => setOpenAccordion(openAccordion === idx ? null : idx)}
-                  className="w-full flex items-center gap-4 p-5 text-left hover:bg-gray-50 transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                    <group.icon className="w-5 h-5 text-red-600" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-gray-900">{group.title}</h3>
-                  </div>
-                  <div className={`w-6 h-6 flex items-center justify-center transition-transform duration-200 ${openAccordion === idx ? 'rotate-180' : ''}`}>
-                    <ChevronRight className="w-5 h-5 text-gray-400 rotate-90" />
-                  </div>
-                </button>
-                <div 
-                  className={`overflow-hidden transition-all duration-200 ${openAccordion === idx ? 'max-h-80' : 'max-h-0'}`}
-                >
-                  <div className="px-3 pb-3 pt-0">
-                    <span className="inline-block px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded mb-2">{group.target}</span>
-                    <p className="text-sm text-gray-600">{group.description}</p>
-                  </div>
-                </div>
+            {/* 2003 */}
+            <div className="flex items-start gap-6 py-3">
+              <span className="w-20 text-sm font-bold text-blue-600 flex-shrink-0 text-right pt-0.5">2003</span>
+              <div className="flex-1 border-l-2 border-blue-200 pl-6">
+                <h4 className="font-bold text-gray-900">Çağaloğlu Anadolu Lisesi Mezunu</h4>
+                <p className="text-sm text-gray-600 mt-1">Almanca eğitimli Türkiye'nin en iyi liselerinden biri</p>
               </div>
-            ))}
+            </div>
+
+            {/* 2005-2007 */}
+            <div className="flex items-start gap-6 py-3">
+              <span className="w-20 text-sm font-bold text-blue-600 flex-shrink-0 text-right pt-0.5">2005-2007</span>
+              <div className="flex-1 border-l-2 border-blue-200 pl-6">
+                <h4 className="font-bold text-gray-900">Aachen, Almanya Deneyimi</h4>
+                <p className="text-sm text-gray-600 mt-1">Almanya'da yaşama ve çalışma deneyimi. Gerçek dil ortamında pratik tecrübe.</p>
+              </div>
+            </div>
+
+            {/* 2008 */}
+            <div className="flex items-start gap-6 py-3">
+              <span className="w-20 text-sm font-bold text-blue-600 flex-shrink-0 text-right pt-0.5">2008</span>
+              <div className="flex-1 border-l-2 border-blue-200 pl-6">
+                <h4 className="font-bold text-gray-900">YDT Sınavı Yüksek Başarı</h4>
+                <p className="text-sm text-gray-600 mt-1">Yabancı Dil Testi'nde (YDT) yüksek başarı oranı. Akademik dil yeterliliği kanıtı.</p>
+              </div>
+            </div>
+
+            {/* 2015 */}
+            <div className="flex items-start gap-6 py-3">
+              <span className="w-20 text-sm font-bold text-blue-600 flex-shrink-0 text-right pt-0.5">2015</span>
+              <div className="flex-1 border-l-2 border-blue-200 pl-6">
+                <h4 className="font-bold text-gray-900">Goethe-Zertifikat C1</h4>
+                <p className="text-sm text-gray-600 mt-1">İleri düzey Almanca yeterlilik sertifikası. Uluslararası geçerli dil yeterliliği belgesi.</p>
+              </div>
+            </div>
+
+            {/* 2022 */}
+            <div className="flex items-start gap-6 py-3">
+              <span className="w-20 text-sm font-bold text-red-600 flex-shrink-0 text-right pt-0.5">2022</span>
+              <div className="flex-1 border-l-2 border-red-200 pl-6">
+                <h4 className="font-bold text-gray-900">Almanca Öğretmeni</h4>
+                <p className="text-sm text-gray-600 mt-1">Birçok yabancı dil kurumunda eş zamanlı olarak Almanca öğretmeni olarak çalışmaktayım.</p>
+              </div>
+            </div>
+
+            {/* 2024-2025 */}
+            <div className="flex items-start gap-6 py-3">
+              <span className="w-20 text-sm font-bold text-red-600 flex-shrink-0 text-right pt-0.5">2024-2025</span>
+              <div className="flex-1 border-l-2 border-red-200 pl-6">
+                <h4 className="font-bold text-gray-900">Müşteri Temsilcisi - Wayfair</h4>
+                <p className="text-sm text-gray-600 mt-1">Wayfair firmasında Almanca yazılı müşteri temsilcisi olarak çalıştım.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Divider */}
-      <div className="flex items-center justify-center py-8 bg-white">
-        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
-      </div>
-
-      {/* Why Choose Us */}
-      <section className="py-12 md:py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Neden Bu Kurs?
-            </h2>
-            <p className="text-gray-600">Sizi başarıya götüren farklılıklar</p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {whyChooseUs.map((item, idx) => (
-              <div key={idx} className="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-4 hover:scale-110 transition-transform">
-                  <item.icon className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                <span className="inline-block px-2 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded mb-3">{item.subtitle}</span>
-                <p className="text-sm text-gray-600">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Divider */}
-      <div className="flex items-center justify-center py-8 bg-white">
-        <div className="w-16 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent rounded-full"></div>
-      </div>
 
       {/* CTA Section */}
       <section id="iletisim" className="py-12 md:py-16 bg-white">
@@ -805,11 +568,14 @@ function BilgiPage() {
             <p className="text-base font-semibold text-gray-900 mb-3">
               Almanca Öğrenme Yolculuğunuza Başlayın!
             </p>
+            <p className="text-base text-gray-600 mb-2 max-w-2xl mx-auto">
+              Online veya yüz yüze dersler için bilgi alın.
+            </p>
             <p className="text-base text-gray-600 mb-12 max-w-2xl mx-auto">
-              Online veya yüz yüze dersler için bilgi alın. Ücretsiz seviye tespit sınavı ve danışmanlık ile size en uygun programı birlikte belirleyelim.
+              Ücretsiz seviye tespit sınavı ve danışmanlık ile size en uygun programı birlikte belirleyelim.
             </p>
 
-            <div className="grid sm:grid-cols-3 gap-5 mb-12">
+            <div className="grid sm:grid-cols-2 gap-5 mb-12 max-w-2xl mx-auto">
               <div className="bg-gray-50 rounded-lg p-6">
                 <Phone className="w-8 h-8 text-red-600 mx-auto mb-4" />
                 <h4 className="font-semibold text-gray-900 mb-2">İletişim</h4>
@@ -819,11 +585,6 @@ function BilgiPage() {
                 <FileText className="w-8 h-8 text-red-600 mx-auto mb-4" />
                 <h4 className="font-semibold text-gray-900 mb-2">Ücretsiz Seviye Tespiti</h4>
                 <p className="text-sm text-gray-500">Mevcut dil seviyenizi belirleyelim</p>
-              </div>
-              <div className="bg-gray-50 rounded-lg p-6">
-                <Calendar className="w-8 h-8 text-red-600 mx-auto mb-4" />
-                <h4 className="font-semibold text-gray-900 mb-2">Program Planlama</h4>
-                <p className="text-sm text-gray-500">Size özel program oluşturalım</p>
               </div>
             </div>
 
