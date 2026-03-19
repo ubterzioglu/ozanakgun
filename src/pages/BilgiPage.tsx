@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { 
   GraduationCap, Clock, Award, BookOpen, Users, Video, MapPin, 
-  CheckCircle, Phone, Mail, Calendar, Star, TrendingUp, 
+  CheckCircle, Phone, Calendar, Star, TrendingUp, 
   Globe, FileText, Headphones, PenTool, MessageCircle, 
   ChevronRight, BadgeCheck, Target, Zap, Heart,
   Briefcase, Wrench, Stethoscope
@@ -9,7 +9,6 @@ import {
 import './BilgiPage.css'
 
 function BilgiPage() {
-  const [activeTab, setActiveTab] = useState('online')
   const [openAccordion, setOpenAccordion] = useState<number | null>(null)
   const [showUpButton, setShowUpButton] = useState(false)
 
