@@ -102,12 +102,6 @@ function BilgiPage() {
     { title: 'Günlük İletişim', target: 'Günlük hayat odaklı', description: 'Tatil, seyahat veya Almanya\'da yaşayan yakınlarınızla iletişim kurmak için Almanca öğrenmek isteyenler için uygundur. Temel kelime haznesi, basit diyaloglar ve günlük rutinleri anlatma becerileri üzerinde durulur. Gerçek hayat senaryoları ile eğlenceli ve pratik bir öğrenme deneyimi sunulmaktadır.', icon: Globe },
   ]
 
-  const testimonials = [
-    { name: 'Ahmet K.', role: 'Mühendis - A2 Sertifika', text: '4 ayda A2 seviyesini tamamladım ve Goethe sınavını başarıyla geçtim. Almanya\'da iş bulma sürecim şimdi çok daha kolay.', rating: 5 },
-    { name: 'Fatma Y.', role: 'Ev Hanımı - A1 Sertifika', text: 'Hiç Almanca bilmiyordum ama 3 ayda A1 seviyesini tamamlayıp eşimle birleştim. Çok sabırlı ve anlayışlı bir eğitmen.', rating: 5 },
-    { name: 'Mehmet S.', role: 'Tekniker - A2 Sertifika', text: 'Online dersler çok verimliydi. İşimden dolayı vakit bulamıyordum ama esnek saatler sayesinde hedefime ulaştım.', rating: 5 },
-  ]
-
   const whyChooseUs = [
     { title: 'Akademik + Pratik Deneyim', subtitle: 'Teori ve pratik bir arada', description: 'Hem teorik bilgi hem de gerçek hayat tecrübesi. Almanya\'da yaşama deneyimi ile kültürel bağlamda öğrenme.', icon: GraduationCap },
     { title: 'Kişiselleştirilmiş Öğrenme', subtitle: 'Size özel müfredat', description: 'Her öğrencinin ihtiyaçlarına göre özelleştirilmiş program. Farklı öğrenme stillerine uyum sağlama.', icon: Target },
